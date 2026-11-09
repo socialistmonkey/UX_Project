@@ -1,6 +1,6 @@
 # <XXX>: <the idea in one sentence>
 
-Student: <Luka Biniashvili>  ·  Platform: <iOS | Android | responsive web>
+Student: Luka Biniashvili  ·  Platform: <iOS | Android | responsive web>
 Figma design file: <link, "anyone with the link can view">
 FigJam research board: <link, "anyone with the link can view">
 Prototype: <link, from step 6>
