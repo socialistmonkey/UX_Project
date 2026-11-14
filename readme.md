@@ -1,15 +1,15 @@
-# <XXX>: <the idea in one sentence>
+# Image Bender: a Mac app for corrupting images by hand without breaking the file
 
-Student: Luka Biniashvili  ·  Platform: <iOS | Android | responsive web>
-Figma design file: <link, "anyone with the link can view">
-FigJam research board: <link, "anyone with the link can view">
-Prototype: <link, from step 6>
+Student: Luka Biniashvili  ·  Platform: macOS desktop (pending instructor approval; fallback: iPhone version)
+Figma design file: (added in Step 2)
+FigJam research board: (added in Step 2)
+Prototype: (added in Step 6)
 
 ## The idea in one sentence
-<App> helps <who> to <task> when <situation>.
+Image Bender helps glitch artists to corrupt an image byte by byte, with locked safe zones that keep the file openable, when preset filters feel fake and hand-databending keeps destroying their files.
 
 ## Status
-- [*] Step 1 · Idea and references (due: session 2)
+- [ ] Step 1 · Idea and references (due: session 2)
 - [ ] Step 2 · Benchmark and interviews (due: session 3)
 - [ ] Step 3 · Insights, persona, journey map, problem (due: session 4)
 - [ ] Step 4 · Concept, sitemap, user flow, wireframes (due: session 5)
@@ -17,4 +17,4 @@ Prototype: <link, from step 6>
 - [ ] Step 6 · Prototype, test, case study (due: final review)
 
 ## AI use (whole project)
-<tool · what for · what I changed>, or: none
+Claude (Anthropic) · drafted the first version of 01-idea/idea.md and found reference candidates for 01-idea/references.md · I changed: <fill in what you rewrote or replaced>
