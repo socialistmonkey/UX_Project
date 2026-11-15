@@ -1,6 +1,6 @@
 # Image Bender: a Mac app for corrupting images by hand without breaking the file
 
-Student: Luka Biniashvili  ·  Platform: macOS desktop (pending instructor approval; fallback: iPhone version)
+Student: Luka Biniashvili  ·  Platform: macOS desktop 
 Figma design file: (added in Step 2)
 FigJam research board: (added in Step 2)
 Prototype: (added in Step 6)
