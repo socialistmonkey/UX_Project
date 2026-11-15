@@ -9,7 +9,7 @@ Prototype: (added in Step 6)
 Image Bender helps glitch artists to corrupt an image byte by byte, with locked safe zones that keep the file openable, when preset filters feel fake and hand-databending keeps destroying their files.
 
 ## Status
-- [ ] Step 1 · Idea and references (due: session 2)
+- [*] Step 1 · Idea and references (due: session 2)
 - [ ] Step 2 · Benchmark and interviews (due: session 3)
 - [ ] Step 3 · Insights, persona, journey map, problem (due: session 4)
 - [ ] Step 4 · Concept, sitemap, user flow, wireframes (due: session 5)
@@ -17,4 +17,3 @@ Image Bender helps glitch artists to corrupt an image byte by byte, with locked 
 - [ ] Step 6 · Prototype, test, case study (due: final review)
 
 ## AI use (whole project)
-Claude (Anthropic) · drafted the first version of 01-idea/idea.md and found reference candidates for 01-idea/references.md · I changed: <fill in what you rewrote or replaced>
