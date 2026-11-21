@@ -1,0 +1,33 @@
+{
+ "format": "image-bender-macro",
+ "version": 1,
+ "name": "Slice shuffle",
+ "note": "Rows shuffled in small groups, then sorted by brightness.",
+ "steps": [
+  {
+   "op": "rows",
+   "params": {
+    "mode": "shuffle",
+    "n": 6,
+    "seed": 2
+   },
+   "sel": null
+  },
+  {
+   "op": "sort",
+   "params": {
+    "dir": "h",
+    "lo": 70,
+    "hi": 210,
+    "desc": false
+   },
+   "sel": {
+    "kind": "rect",
+    "fx": 0,
+    "fy": 0.25,
+    "fw": 1,
+    "fh": 0.4
+   }
+  }
+ ]
+}

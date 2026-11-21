@@ -4,6 +4,7 @@ Student: Luka Biniashvili  ·  Platform: macOS desktop
 Figma design file: (added in Step 2)
 FigJam research board: (added in Step 2)
 Prototype: (added in Step 6)
+App code: [app/](app/) (the Image Bender project version, run with `npm install` then `npm start`)
 
 ## The idea in one sentence
 Image Bender helps glitch artists to corrupt an image byte by byte, with locked safe zones that keep the file openable, when preset filters feel fake and hand-databending keeps destroying their files.

@@ -1,0 +1,57 @@
+{
+ "format": "image-bender-macro",
+ "version": 1,
+ "name": "Tear & tint",
+ "note": "Torn rows, split colour and a swapped band.",
+ "steps": [
+  {
+   "op": "slide",
+   "params": {
+    "shift": 170,
+    "byteOff": "0"
+   },
+   "sel": {
+    "kind": "rect",
+    "fx": 0,
+    "fy": 0.2,
+    "fw": 1,
+    "fh": 0.08
+   }
+  },
+  {
+   "op": "slide",
+   "params": {
+    "shift": -120,
+    "byteOff": "0"
+   },
+   "sel": {
+    "kind": "rect",
+    "fx": 0,
+    "fy": 0.55,
+    "fw": 1,
+    "fh": 0.06
+   }
+  },
+  {
+   "op": "rgbSplit",
+   "params": {
+    "rx": -16,
+    "bx": 16
+   },
+   "sel": null
+  },
+  {
+   "op": "channels",
+   "params": {
+    "perm": "GBR"
+   },
+   "sel": {
+    "kind": "rect",
+    "fx": 0,
+    "fy": 0.7,
+    "fw": 1,
+    "fh": 0.2
+   }
+  }
+ ]
+}

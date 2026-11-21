@@ -21,6 +21,6 @@ Corrupt one image and export it so that it still opens.
 
 ## Three things the app will not do
 1. No AI: no AI filters, no AI generation. Every effect is a mechanical corruption of the data.
-2. No video in this project: the video and datamosh category is out of scope for the course version.
+2. No video, no music and no animation in this project: the video, datamosh, music-reactive and frame-by-frame animation features are out of scope for the course version (they were removed from the project copy of the app).
 3. No general photo editing: no crop, colour correction or retouching.
 

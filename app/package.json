@@ -1,0 +1,86 @@
+{
+  "name": "image-bender",
+  "productName": "Image Bender",
+  "version": "1.2.1",
+  "description": "Safe-zone image corruption for glitch artists: hex-level edits and locked safe zones. Project version without the video studio and music features.",
+  "main": "main.js",
+  "author": "Luka Biniashvili",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/core.test.js",
+    "dist": "electron-builder --mac --dir --publish never",
+    "dist:dmg": "electron-builder --mac dmg --publish never",
+    "test:core": "node test/core.test.js"
+  },
+  "build": {
+    "appId": "art.binicreative.imagebender",
+    "productName": "Image Bender",
+    "copyright": "Copyright \u00a9 2026 Luka Biniashvili",
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "recipes/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "identity": null,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "extendInfo": {
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "Image",
+            "CFBundleTypeRole": "Editor",
+            "LSHandlerRank": "Alternate",
+            "LSItemContentTypes": [
+              "com.microsoft.bmp",
+              "public.tiff",
+              "public.png",
+              "public.jpeg",
+              "com.compuserve.gif"
+            ]
+          }
+        ]
+      },
+      "minimumSystemVersion": "11.0"
+    },
+    "dmg": {
+      "title": "Image Bender ${version}"
+    },
+    "artifactName": "Image-Bender-${version}-${arch}.${ext}",
+    "afterPack": "scripts/adhoc-sign.js",
+    "asarUnpack": [
+      "src/core/**/*"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "homepage": "https://binicreative.art",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR-USERNAME/image-bender.git"
+  },
+  "keywords": [
+    "glitch",
+    "databending",
+    "hex-editor",
+    "image",
+    "corruption",
+    "electron",
+    "macos"
+  ]
+}

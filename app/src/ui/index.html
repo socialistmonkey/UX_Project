@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' blob: data:; media-src 'self' blob: file:; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+  <title>Image Bender</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="app">
+  <header id="topbar"><div id="tabs"></div></header>
+
+  <div id="toolbar">
+    <button id="btnOpen">Open…</button>
+    <div class="menuwrap">
+      <button id="btnConvert">Convert ▾</button>
+      <div class="menu" id="convertMenu">
+        <button data-conv="bmp">Copy as BMP <small>Uncompressed, bottom-up. Best for predictable edits.</small></button>
+        <button data-conv="tiff">Copy as TIFF <small>Uncompressed, single strip.</small></button>
+        <button data-conv="ppm">Copy as PPM <small>The simplest picture file there is.</small></button>
+        <button data-conv="png">Copy as PNG <small>Edit decompressed pixels; scanline-filter tricks.</small></button>
+        <button data-conv="gif">Copy as GIF <small>Palette image (256 colours). Edit the colour numbers.</small></button>
+        <button data-conv="webp">Copy as WebP <small>Compressed. Edits that break it are undone.</small></button>
+        <hr />
+        <button data-conv="jpeg">Bake into a new JPEG <small>Locks the current look in. Then corrupt it again.</small></button>
+        <button data-conv="jpegrst">JPEG made of blocks <small>Makes a JPEG you can shuffle block by block.</small></button>
+        <button data-conv="genloss">Generation loss… <small>Re-save as JPEG many times.</small></button>
+      </div>
+    </div>
+    <span class="sep"></span>
+    <button id="btnUndo" title="Undo (⌘Z)">↶ Undo</button>
+    <button id="btnRedo" title="Redo (⇧⌘Z)">Redo ↷</button>
+    <span class="sep"></span>
+    <div class="seg" id="modeSeg">
+      <button data-mode="visual" class="on" title="⌘1">Visual</button>
+      <button data-mode="hex" title="⌘2">Hex</button>
+    </div>
+    <button id="btnCompare" title="Hold to see the original (or hold \)">Hold to compare</button>
+    <button id="btnSplit" title="Split the picture between original and edited (C)">Split view</button>
+    <span id="fileinfo"></span>
+    <span class="spacer"></span>
+    <div class="menuwrap">
+      <button id="btnExport" class="primary">Export ▾</button>
+      <div class="menu right" id="exportMenu">
+        <button data-exp="file" id="expFile">Save file <small>Same format, ⌘S</small></button>
+        <hr />
+        <button data-exp="png">Save picture as PNG <small>What you see, as a normal image</small></button>
+        <button data-exp="jpeg">Save picture as JPEG <small>What you see, as a normal image</small></button>
+        <button data-exp="webp">Save picture as WebP <small>What you see, as a normal image</small></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="notes"><span></span><button id="notesX" title="Dismiss">✕</button></div>
+
+  <main id="main">
+    <aside id="left"></aside>
+
+    <section id="stage">
+      <div id="visual">
+        <div id="canvasWrap">
+          <canvas id="cv"></canvas>
+          <canvas id="cmp"></canvas>
+          <div id="hexBox" class="box" style="display:none"></div>
+          <div id="selBox" class="box" style="display:none"><div id="selTag"></div></div>
+          <div id="ghostBox" class="box" style="display:none"><span>paste here</span></div>
+          <div id="splitLine" style="display:none"><span class="sl l">ORIGINAL</span><span class="sl r">EDITED</span><i></i></div>
+        </div>
+        <div id="busy">Rendering…</div>
+        <div id="compareTag">ORIGINAL</div>
+        <div id="zoomctl"><button id="zOut">−</button><span id="zLbl">Fit</span><button id="zIn">+</button><button id="zFit">Fit</button></div>
+      </div>
+
+      <div id="hex">
+        <div id="hexbar">
+          <button id="hxGo" title="⌘G">Go to…</button>
+          <button id="hxFind" title="⌘F">Find…</button>
+          <span class="lab">Columns</span>
+          <select id="hxCols"><option value="auto">Match pixels</option><option value="8">8</option><option value="16">16</option><option value="24">24</option><option value="32">32</option><option value="48">48</option><option value="64">64</option></select>
+          <span class="lab">Group</span>
+          <select id="hxGroup"><option value="px">By pixel</option><option value="none">None</option><option value="2">2</option><option value="4">4</option><option value="8">8</option></select>
+          <span class="sep"></span>
+          <button id="hxCopy">Copy</button>
+          <button id="hxCopyTxt">Copy text</button>
+          <button id="hxPaste">Paste</button>
+          <button id="hxPasteTxt">Paste text</button>
+          <span class="sep"></span>
+          <div class="menuwrap"><button id="hxMarks">Bookmarks ▾</button><div class="menu" id="marksMenu"></div></div>
+          <span class="spacer"></span>
+          <span class="lab" id="hxHint"></span>
+        </div>
+        <div id="hexbar2">
+          <span class="lab">Selected bytes</span>
+          <input id="hxPat" type="text" value="FF 00 FF" spellcheck="false" title="Hex bytes to repeat" />
+          <button id="hxFill">Fill</button>
+          <button id="hxZero">Zero</button>
+          <button id="hxRand">Random</button>
+          <button id="hxInv">Invert</button>
+          <button id="hxRevert" title="Put the original bytes back">Revert</button>
+          <span class="sep"></span>
+          <button id="hxDec" title="Subtract 1 from every selected byte (⌥↓)">−1</button>
+          <button id="hxInc" title="Add 1 to every selected byte (⌥↑)">+1</button>
+        </div>
+        <div id="hexfind">
+          <select id="hfMode"><option value="hex">Hex</option><option value="text">Text</option></select>
+          <input id="hfQ" type="text" placeholder="FF D8 ?? E0  (?? = any byte)" spellcheck="false" />
+          <label class="chk"><input type="checkbox" id="hfCase"> Match case</label>
+          <button id="hfPrev">Prev</button><button id="hfNext">Next</button>
+          <span class="lab" id="hfCount"></span>
+          <span class="sep"></span>
+          <input id="hfRep" type="text" placeholder="Replace with (hex, ?? keeps)" spellcheck="false" />
+          <button id="hfRepOne">Replace</button><button id="hfRepAll">Replace all</button>
+          <span class="spacer"></span>
+          <button id="hfClose" title="Esc">Close</button>
+        </div>
+        <div id="hexhead"></div>
+        <div id="hexbody" tabindex="0"><div id="hexrows"></div><div id="hexscroll"><div id="hexthumb"></div></div></div>
+        <div id="inspector"></div>
+      </div>
+
+      <div id="filemap">
+        <canvas id="mapcv" height="14"></canvas>
+        <div class="lg">
+          <span><i style="background:#8a8a8a"></i>Safe to edit</span>
+          <span><i style="background:#4a4a4a"></i>Tables (JPEG detail tool only)</span>
+          <span><i style="background:#1c1c1c"></i>Locked (headers, sizes)</span>
+          <span><i style="background:#fff"></i>Your edits</span>
+          <span><i style="background:none;border-color:#fff"></i>Selection</span>
+          <span class="grow" id="mapInfo"></span>
+        </div>
+      </div>
+    </section>
+
+    <aside id="right"><div id="rtabs"><button data-rt="tool" class="on">Tool</button><button data-rt="history">History</button><button data-rt="macros">Macros</button></div><div id="rbody"></div></aside>
+  </main>
+
+  <footer id="status"><span id="stMsg">Ready</span><span class="spacer"></span><span id="stRight"></span></footer>
+
+  <div id="empty">
+    <div class="card">
+      <h1>Image Bender</h1>
+      <p>Corrupt images by hand, without breaking the file.</p>
+      <div class="chips"><span>BMP</span><span>TIFF</span><span>PNG</span><span>JPEG</span><span>GIF</span><span>WEBP</span><span>ICO</span><span>PPM</span></div>
+      <p>Drop an image here, or</p>
+      <button class="primary" id="emptyOpen">Open an image…</button>
+      <p style="margin-top:22px;font-size:12px">Other formats are converted to BMP automatically. Any file can be opened as raw pixels (File menu).</p>
+      <p style="font-size:12px"><a href="#" id="emptyTour">Take the tour</a> · <a href="#" id="emptyKeys">Keyboard shortcuts</a></p>
+    </div>
+  </div>
+
+  <div id="toasts"></div>
+  <div id="modal"></div>
+</div>
+
+<script src="../core/util.js"></script>
+<script src="../core/doc.js"></script>
+<script src="../core/raster.js"></script>
+<script src="../core/formats.js"></script>
+<script src="../core/png.js"></script>
+<script src="../core/gif.js"></script>
+<script src="../core/ops.js"></script>
+<script src="../core/ops2.js"></script>
+<script src="../core/jpegenc.js"></script>
+<script src="../core/macro.js"></script>
+<script src="../core/formats2.js"></script>
+<script src="../core/ops3.js"></script>
+<script src="app.js"></script>
+<script src="visual.js"></script>
+<script src="hex.js"></script>
+<script src="tools.js"></script>
+<script src="panels.js"></script>
+<script src="recipes.js"></script>
+<script src="tour.js"></script>
+<script src="boot.js"></script>
+</body>
+</html>

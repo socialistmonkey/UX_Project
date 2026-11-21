@@ -1,0 +1,49 @@
+{
+ "format": "image-bender-macro",
+ "version": 1,
+ "name": "Hard drive failure",
+ "note": "Stuttering rows, a bit-flipped band and a collapsed tail.",
+ "steps": [
+  {
+   "op": "rows",
+   "params": {
+    "mode": "hold",
+    "n": 14,
+    "seed": 3
+   },
+   "sel": null
+  },
+  {
+   "op": "bitOp",
+   "params": {
+    "mode": "xor",
+    "pattern": "5A",
+    "chan": "all"
+   },
+   "sel": {
+    "kind": "rect",
+    "fx": 0,
+    "fy": 0.55,
+    "fw": 1,
+    "fh": 0.22
+   }
+  },
+  {
+   "op": "compGlitch",
+   "params": {
+    "algo": "deflate",
+    "hits": 6,
+    "how": "byte",
+    "after": "smear",
+    "seed": 9
+   },
+   "sel": {
+    "kind": "rect",
+    "fx": 0,
+    "fy": 0.7,
+    "fw": 1,
+    "fh": 0.3
+   }
+  }
+ ]
+}

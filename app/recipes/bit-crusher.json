@@ -1,0 +1,25 @@
+{
+ "format": "image-bender-macro",
+ "version": 1,
+ "name": "Bit crusher",
+ "note": "Few colour levels, dropped bits, harsh and flat.",
+ "steps": [
+  {
+   "op": "levels",
+   "params": {
+    "mode": "posterize",
+    "levels": 3
+   },
+   "sel": null
+  },
+  {
+   "op": "bitOp",
+   "params": {
+    "mode": "and",
+    "pattern": "F0",
+    "chan": "all"
+   },
+   "sel": null
+  }
+ ]
+}

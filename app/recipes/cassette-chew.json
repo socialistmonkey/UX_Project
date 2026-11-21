@@ -1,0 +1,38 @@
+{
+ "format": "image-bender-macro",
+ "version": 1,
+ "name": "Cassette chew",
+ "note": "Audio-style echoes and wobble, like tape in a failing deck.",
+ "steps": [
+  {
+   "op": "echo",
+   "params": {
+    "decay": 60,
+    "count": 4
+   },
+   "sel": null
+  },
+  {
+   "op": "tremolo",
+   "params": {
+    "depth": 55
+   },
+   "sel": null
+  },
+  {
+   "op": "gain",
+   "params": {
+    "gain": 1.6,
+    "over": "fold",
+    "around": "128"
+   },
+   "sel": {
+    "kind": "rect",
+    "fx": 0,
+    "fy": 0.3,
+    "fw": 1,
+    "fh": 0.4
+   }
+  }
+ ]
+}

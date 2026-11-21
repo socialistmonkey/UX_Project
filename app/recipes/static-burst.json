@@ -1,0 +1,31 @@
+{
+ "format": "image-bender-macro",
+ "version": 1,
+ "name": "Static burst",
+ "note": "Speckle noise plus a band of TV static.",
+ "steps": [
+  {
+   "op": "noise",
+   "params": {
+    "amount": 5,
+    "mode": "random",
+    "seed": 5
+   },
+   "sel": null
+  },
+  {
+   "op": "fill",
+   "params": {
+    "mode": "static",
+    "seed": 7
+   },
+   "sel": {
+    "kind": "rect",
+    "fx": 0,
+    "fy": 0.4,
+    "fw": 1,
+    "fh": 0.05
+   }
+  }
+ ]
+}
