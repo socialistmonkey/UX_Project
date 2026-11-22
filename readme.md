@@ -1,4 +1,4 @@
-<img src="logo.png" width="128" alt="Image Bender icon">
+<img src="logo.png" width="220" alt="Image Bender icon">
 
 # Image Bender: a Mac app for corrupting images by hand without breaking the file
 
