@@ -5,7 +5,7 @@
 - Student: Luka Biniashvili
 - Platform: macOS desktop (Electron app)
 - Figma design file: https://www.figma.com/design/pcAjQoWQ1kEq07wu0OsP3W/ux-project-image-bender
-- FigJam research board: (added in Step 2)
+- FigJam research board: https://www.figma.com/board/IqRHbLA7YBbxhtnzLH2CIS/ux-research-image-bender
 - Prototype: (added in Step 6)
 - Download (Mac, Apple silicon and Intel): [latest release](https://github.com/socialistmonkey/UX_Project/releases/latest)
 - App code: [app/](app/) (the Image Bender project version, run with `npm install` then `npm start`)
