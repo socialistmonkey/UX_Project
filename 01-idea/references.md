@@ -32,7 +32,7 @@
 
 ![Screenshot: jpeg-butcher](img/04-jpeg-butcher.png)
 
-- Link: https://github.com/saschazar21/jpeg-butcher
+- Link: https://jpeg-butcher.sascha.app/ (source code: https://github.com/saschazar21/jpeg-butcher)
 - Take: The interface is very minimalistic, and its loop is change a byte, look at the picture, reset if it went too far. That is the simplest version of what Image Bender does.
 - Avoid: It is not user friendly, because you have to work with the hex code directly and use a sheet from GitHub. Image Bender is easy to use and still lets you edit the hex if you want to.
 

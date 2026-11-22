@@ -15,7 +15,7 @@ Image Bender lets glitch artists corrupt an image byte by byte and lock safe zon
 
 ## Status
 - [x] Step 1 · Idea and references (due: session 2)
-- [ ] Step 2 · Benchmark and interviews (due: session 3)
+- [x] Step 2 · Benchmark and interviews (due: session 3)
 - [ ] Step 3 · Insights, persona, journey map, problem (due: session 4)
 - [ ] Step 4 · Concept, sitemap, user flow, wireframes (due: session 5)
 - [ ] Step 5 · UI kit, screens, heuristic review (due: session 6)
@@ -26,4 +26,5 @@ Image Bender lets glitch artists corrupt an image byte by byte and lock safe zon
 Tool: Claude (Anthropic). Every step file also says where AI was used.
 
 - Step 1: Claude helped me find glitch tools for the references and tidied the wording of idea.md and this README. I opened every link, took every screenshot and decided what goes in each Take and Avoid.
+- Step 2: Claude helped set up the benchmark table, wrote the first version of the interview questions and the post for online participants, drafted the patterns, gaps and fixes sections from my notes, and checked my files against the course slides. I tested all three competitors myself, counted the steps, took the screenshots and wrote the findings. The interviews are still to come.
 - Figma file: Claude helped draft the first UI kit, screens and wireframes. I will check and change them in Steps 4 and 5.
