@@ -1,3 +1,5 @@
+<img src="logo.png" width="128" alt="Image Bender icon">
+
 # Image Bender: a Mac app for corrupting images by hand without breaking the file
 
 - Student: Luka Biniashvili
@@ -5,6 +7,7 @@
 - Figma design file: https://www.figma.com/design/pcAjQoWQ1kEq07wu0OsP3W/ux-project-image-bender
 - FigJam research board: (added in Step 2)
 - Prototype: (added in Step 6)
+- Download (Mac, Apple silicon and Intel): [latest release](https://github.com/socialistmonkey/UX_Project/releases/latest)
 - App code: [app/](app/) (the Image Bender project version, run with `npm install` then `npm start`)
 
 ## The idea in one sentence

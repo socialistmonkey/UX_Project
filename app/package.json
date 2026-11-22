@@ -11,6 +11,8 @@
     "test": "node test/core.test.js",
     "dist": "electron-builder --mac --dir --publish never",
     "dist:dmg": "electron-builder --mac dmg --publish never",
+    "dist:universal": "electron-builder --mac dmg --universal --publish never",
+    "dist:both": "electron-builder --mac dmg --arm64 --x64 --publish never",
     "test:core": "node test/core.test.js"
   },
   "build": {
@@ -72,7 +74,7 @@
   "homepage": "https://binicreative.art",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR-USERNAME/image-bender.git"
+    "url": "git+https://github.com/socialistmonkey/UX_Project.git"
   },
   "keywords": [
     "glitch",
